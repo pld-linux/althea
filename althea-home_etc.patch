@@ -1,0 +1,95 @@
+diff -Nru althea-0.5.7/load_config.cpp althea-0.5.7.new/load_config.cpp
+--- althea-0.5.7/load_config.cpp	Tue Jan 22 17:30:15 2002
++++ althea-0.5.7.new/load_config.cpp	Sat Mar 22 20:30:52 2003
+@@ -22,14 +22,28 @@
+ 
+ 	bool savepassword=1, usessl=0, usesmtps=0;
+ 
+-	//  Get the environment variable HOME, this is POSIX and Windows Compliant
+-	home_directory=(char *)malloc(255);
+-	strcpy(home_directory,getenv ("HOME"));
+-	strcat(home_directory, "/");
+-	strcat(home_directory, LOCAL_CONFIG_FILE); 
++	char *config_dir = getenv("CONFIG_DIR");
++	if (config_dir)
++	{
++		home_directory=(char *)malloc(255);
++		strcpy(home_directory,config_dir);
++		strcat(home_directory, "/");
++		strcat(home_directory, CONFIG_DIR_CONFIG_FILE); 
+ 		
+-	local_config_in.open(home_directory);
+-	free(home_directory);
++		local_config_in.open(home_directory);
++		free(home_directory);
++	}
++	else
++	{
++		//  Get the environment variable HOME, this is POSIX and Windows Compliant
++		home_directory=(char *)malloc(255);
++		strcpy(home_directory,getenv ("HOME"));
++		strcat(home_directory, "/");
++		strcat(home_directory, LOCAL_CONFIG_FILE); 
++		
++		local_config_in.open(home_directory);
++		free(home_directory);
++	}
+ 	rc_config_in.open(RC_CONFIG_FILE);
+ 	
+ 
+diff -Nru althea-0.5.7/load_config.h althea-0.5.7.new/load_config.h
+--- althea-0.5.7/load_config.h	Tue Jan 22 17:30:15 2002
++++ althea-0.5.7.new/load_config.h	Sat Mar 22 20:28:33 2003
+@@ -20,6 +20,7 @@
+ #include "promptwindow.h"
+ 
+ #define LOCAL_CONFIG_FILE ".althearc"
++#define CONFIG_DIR_CONFIG_FILE "althearc"
+ #define RC_CONFIG_FILE "/etc/althearc"
+ 
+ extern Althea gAlthea;
+diff -Nru althea-0.5.7/save_config.cpp althea-0.5.7.new/save_config.cpp
+--- althea-0.5.7/save_config.cpp	Tue Jan 22 17:30:15 2002
++++ althea-0.5.7.new/save_config.cpp	Sat Mar 22 20:33:17 2003
+@@ -16,12 +16,24 @@
+   char* file_name;
+   Configuration *config;
+   
+-  //  Get the environment variable HOME, this is POSIX and Windows Compliant
+-  file_name=(char *)malloc (255);
+-  strcpy(file_name, getenv ("HOME"));
+-  strcat(file_name, "/"); 
+-  strcat(file_name,LOCAL_CONFIG_FILE);
+-  config_file.open(file_name);
++	char *config_dir = getenv("CONFIG_DIR");
++	if (config_dir)
++	{
++		file_name=(char *)malloc (255);
++  	strcpy(file_name, config_dir);
++  	strcat(file_name, "/"); 
++  	strcat(file_name,CONFIG_DIR_CONFIG_FILE);
++  	config_file.open(file_name);
++	}
++	else
++	{
++	  //  Get the environment variable HOME, this is POSIX and Windows Compliant
++		file_name=(char *)malloc (255);
++  	strcpy(file_name, getenv ("HOME"));
++  	strcat(file_name, "/"); 
++  	strcat(file_name,LOCAL_CONFIG_FILE);
++  	config_file.open(file_name);
++	}
+   if (gAlthea.get_Verbose())
+     cout << "Saveing to " << file_name << endl;
+ 
+diff -Nru althea-0.5.7/save_config.h althea-0.5.7.new/save_config.h
+--- althea-0.5.7/save_config.h	Tue Jan 22 17:30:15 2002
++++ althea-0.5.7.new/save_config.h	Sat Mar 22 20:31:26 2003
+@@ -17,6 +17,7 @@
+ #include "crypto.h"
+ 
+ #define LOCAL_CONFIG_FILE ".althearc"
++#define CONFIG_DIR_CONFIG_FILE "althearc"
+ #define RC_CONFIG_FILE "/etc/althearc"
+ 
+ //  The master function that saves the config in memory to disk
