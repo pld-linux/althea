@@ -20,7 +20,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Althea is an SSL aware IMAP mail for X Window System.
 
 %description -l pl
-Althea jest klinetem poczty IMAP pod X Window System z mo¿liwo¶ci±
+Althea jest klientem poczty IMAP pod X Window System z mo¿liwo¶ci±
 wykorzystania po³±czeñ SSL.
 
 %prep
