@@ -6,6 +6,7 @@ Release:	2
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tgz
+# Source0-md5:	ef84300c1f8a9e0d5d688b564c724e0e
 Patch0:		%{name}-cxx.patch
 Patch1:		%{name}-makefile.patch
 Patch2:		%{name}-etc_dir.patch
