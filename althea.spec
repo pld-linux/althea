@@ -14,7 +14,6 @@ BuildRequires:	gtk+-devel
 BuildRequires:	openssl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
 
 %description
 Althea is an SSL aware IMAP mail for X Window System.
