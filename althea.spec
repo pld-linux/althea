@@ -1,4 +1,4 @@
-Summary:	An GTK+ IMAP mail client
+Summary:	A GTK+ IMAP mail client
 Summary(pl):	Klient poczty IMAP w GTK+
 Name:		althea
 Version:	0.5.7
