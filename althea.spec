@@ -8,7 +8,7 @@ Group:		X11/Applications/Networking
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tgz
 Patch0:		%{name}-cxx.patch
 Patch1:		%{name}-makefile.patch
-Patch2:		%{name}-home_etc.patch
+Patch2:		%{name}-etc_dir.patch
 URL:		http://althea.sourceforge.net/
 BuildRequires:	gtk+-devel
 BuildRequires:	libstdc++-devel
