@@ -1,0 +1,177 @@
+--- althea-0.5.7/Makefile~	Tue Jan 22 18:30:15 2002
++++ althea-0.5.7/Makefile	Fri Feb 22 10:20:54 2002
+@@ -47,126 +47,129 @@
+ 
+ MAIL_POLL_INTERVAL = 60000
+ 
+-CFLAGS = `gtk-config --cflags` -DPACKAGE=${PACKAGE} -DLOCALEDIR=${LOCALEDIR}
++CXXFLAGS = `gtk-config --cflags` -DPACKAGE=${PACKAGE} -DLOCALEDIR=${LOCALEDIR}
+ #DEBUGFLAGS = -Wall -ftemplate-depth-30 -g ${NOSSLFLAG}
+ DEBUGFLAGS = -Wall -g -ftemplate-depth-30 ${NOSSLFLAG}
+ LDADD = `gtk-config --libs` ${LDFLAGS} -lpthread
+ 
+-DESTDIR = /usr/local/bin
++DESTDIR =
++BINDIR = /usr/local/bin
+ PIXDIR = /usr/local/share/althea
+ DOCDIR = /usr/local/doc/althea
+ 
+ all : ${OBJS} 
+-	g++ ${DEBUGFLAGS} ${SSLFLAGS} -o althea main.cpp -DPIXDIR=\"${PIXDIR}\" ${OBJS} ${CFLAGS} ${LDADD}
++	$(CXX) ${DEBUGFLAGS} ${SSLFLAGS} -o althea main.cpp -DPIXDIR=\"${PIXDIR}\" ${OBJS} ${CXXFLAGS} ${LDADD}
+ 
+ 
+ ABEntry.o : ABEntry.h ABEntry.cpp
+-	g++ ${DEBUGFLAGS} -c ABEntry.cpp
++	$(CXX) ${DEBUGFLAGS} -c ABEntry.cpp
+ 
+ Addressbook.o : ABEntry.h Addressbook.h Addressbook.cpp
+-	g++ ${DEBUGFLAGS} -c Addressbook.cpp 
++	$(CXX) ${DEBUGFLAGS} -c Addressbook.cpp 
+ 
+ Althea.o : Althea.h Althea.cpp
+-	g++ ${DEBUGFLAGS} -c Althea.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c Althea.cpp ${CXXFLAGS}
+ 
+ Configuration.o : Configuration.h Configuration.cpp
+-	g++ ${DEBUGFLAGS} -c Configuration.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c Configuration.cpp ${CXXFLAGS}
+ 
+ Folder.o : Server.h SelectFolder.h Folder.h Folder.cpp connection.h
+-	g++ ${DEBUGFLAGS} -c Folder.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c Folder.cpp ${CXXFLAGS}
+ 
+ Message.o : Server.h imap.h Message.h Message.cpp connection.h
+-	g++ ${DEBUGFLAGS} -c Message.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c Message.cpp ${CXXFLAGS}
+ 
+ SelectFolder.o : imap.h basicNetwork.h tcpUtilities.h SelectFolder.h SelectFolder.cpp connection.h progressbar.h progressbar.cpp tolower.h
+-	g++ ${DEBUGFLAGS} -c SelectFolder.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c SelectFolder.cpp ${CXXFLAGS}
+ 
+ SendMail.o : Message.h SendMail.h SendMail.cpp smtp.h support.h
+-	g++ ${DEBUGFLAGS} -c SendMail.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c SendMail.cpp ${CXXFLAGS}
+ 
+ Server.o : imap.h Server.h Server.cpp connection.h
+-	g++ ${DEBUGFLAGS} -c Server.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c Server.cpp ${CXXFLAGS}
+ 
+ about_window.o : callbacks.h support.h about_window.h about_window.cpp
+ 
+-	g++ ${DEBUGFLAGS} -c about_window.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c about_window.cpp ${CXXFLAGS}
+ 
+ configwindow.o : callbacks.h support.h configwindow.h configwindow.cpp
+-	g++ ${DEBUGFLAGS} -c configwindow.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c configwindow.cpp ${CXXFLAGS}
+ 
+ registerwindow.o : callbacks.h support.h registerwindow.h registerwindow.cpp
+-	g++ ${DEBUGFLAGS} -c registerwindow.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c registerwindow.cpp ${CXXFLAGS}
+ 
+ basicNetwork.o : tcpUtilities.h basicNetwork.h basicNetwork.cpp connection.h
+-	g++ ${DEBUGFLAGS} -c basicNetwork.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c basicNetwork.cpp ${CXXFLAGS}
+ 
+ tolower.o : tolower.h tolower.cpp
+-	g++ ${DEBUGFLAGS} -c tolower.cpp
++	$(CXX) ${DEBUGFLAGS} -c tolower.cpp
+ 
+ MIME.o : MIME.h MIME.cpp
+-	 g++ ${DEBUGFLAGS} -c MIME.cpp
++	 $(CXX) ${DEBUGFLAGS} -c MIME.cpp
+ 
+ callbacks.o : main_window.h new_message_window.h Althea.h callbacks.h callbacks.cpp promptwindow.h MIME.h tolower.h support.h
+-	g++ ${DEBUGFLAGS} -DMAIL_POLL_INTERVAL=${MAIL_POLL_INTERVAL} -c callbacks.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -DMAIL_POLL_INTERVAL=${MAIL_POLL_INTERVAL} -c callbacks.cpp ${CXXFLAGS}
+ 
+ imap.o : basicNetwork.h imap.h imap.cpp imapLiterals.h errors.h connection.h
+-	g++ ${DEBUGFLAGS} -c imap.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c imap.cpp ${CXXFLAGS}
+ 
+ register.o : tcpUtilities.h register.h register.cpp connection.h
+-	g++ ${DEBUGFLAGS} -c register.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c register.cpp ${CXXFLAGS}
+ 
+ promptwindow.o : promptwindow.h promptwindow.cpp
+-	g++ ${DEBUGFLAGS} -c promptwindow.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c promptwindow.cpp ${CXXFLAGS}
+ 
+ progressbar.o : progressbar.h progressbar.cpp
+-	g++ ${DEBUGFLAGS} -c progressbar.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c progressbar.cpp ${CXXFLAGS}
+ 
+ load_config.o : Althea.h Server.h Configuration.h load_config.h load_config.cpp crypto.h promptwindow.h
+-	g++ ${DEBUGFLAGS} -c load_config.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c load_config.cpp ${CXXFLAGS}
+ 
+ save_config.o : Althea.h Server.h Configuration.h save_config.h save_config.cpp crypto.h
+-	g++ ${DEBUGFLAGS} -c save_config.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c save_config.cpp ${CXXFLAGS}
+ 
+ main_window.o : Althea.h main_window.h main_window.cpp
+-	g++ ${DEBUGFLAGS} -c main_window.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c main_window.cpp ${CXXFLAGS}
+ 
+ new_message_window.o : new_message_window.h new_message_window.cpp
+-	g++ ${DEBUGFLAGS} -c new_message_window.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c new_message_window.cpp ${CXXFLAGS}
+ 
+ support.o : callbacks.h support.h support.cpp
+-	g++ ${DEBUGFLAGS} -c support.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c support.cpp ${CXXFLAGS}
+ 
+ tcpUtilities.o : tcpUtilities.h tcpUtilities.cpp connection.h
+-	g++ ${DEBUGFLAGS} ${NOSSLFLAG} -c tcpUtilities.cpp
++	$(CXX) ${DEBUGFLAGS} ${NOSSLFLAG} -c tcpUtilities.cpp
+ 
+ crypto.o : crypto.h crypto.cpp
+-	g++ ${DEBUGFLAGS} -c crypto.cpp
++	$(CXX) ${DEBUGFLAGS} -c crypto.cpp
+ 
+ print_dialog.o : print_dialog.cpp print_dialog.h
+-	g++ ${DEBUGFLAGS} -c print_dialog.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c print_dialog.cpp ${CXXFLAGS}
+ 
+ smtp.o : smtp.cpp smtp.h errors.h connection.h
+-	g++ ${DEBUGFLAGS} ${NOSSLFLAG} -c smtp.cpp ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} ${NOSSLFLAG} -c smtp.cpp ${CXXFLAGS}
+ 
+ helpDialog.o : helpDialog.cpp helpDialog.h
+-	g++ ${DEBUGFLAGS} -c helpDialog.cpp -DDOCDIR=\"${DOCDIR}\" ${CFLAGS}
++	$(CXX) ${DEBUGFLAGS} -c helpDialog.cpp -DDOCDIR=\"${DOCDIR}\" ${CXXFLAGS}
+ 
+-${DESTDIR} :
+-	mkdir -p ${DESTDIR}
+-
+-${DOCDIR} :
++${DESTDIR}${DOCDIR} :
+-	mkdir -p ${DOCDIR}
++	mkdir -p ${DESTDIR}${DOCDIR}
+ 
+-${PIXDIR} :
++${DESTDIR}${PIXDIR} :
+-	mkdir -p ${PIXDIR}
++	mkdir -p ${DESTDIR}${PIXDIR}
+ 
+-install : althea pixmaps Documentation ${DESTDIR} ${DOCDIR} ${PIXDIR}
+-	cp ./althea ${DESTDIR}
+-	cp -r Documentation/* ${DOCDIR}
+-	cp -r pixmaps/* ${PIXDIR}
++${DESTDIR}${BINDIR} :
++	mkdir -p ${DESTDIR}${BINDIR}
++
++install : althea pixmaps Documentation ${DESTDIR}${BINDIR} ${DESTDIR}${PIXDIR}
++	cp ./althea ${DESTDIR}${BINDIR}
++	cp -r pixmaps/* ${DESTDIR}${PIXDIR}
++
++install-doc: ${DESTDIR}${DOCDIR}
++	cp -r Documentation/* ${DESTDIR}${DOCDIR}
+ 
+ uninstall: 
+-	rm -f ${DESTDIR}/althea
++	rm -f ${BINDIR}/althea
+ 	rm -rf ${DOCDIR}/*
+ 	rmdir ${DOCDIR}
+ 	rm -rf ${PIXDIR}/*
