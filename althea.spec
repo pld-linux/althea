@@ -11,7 +11,7 @@ Patch1:		%{name}-makefile.patch
 URL:		http://althea.sourceforge.net/
 BuildRequires:	libstdc++-devel
 BuildRequires:	gtk+-devel
-BuildRequires:	openssl-devel
+BuildRequires:	openssl-devel >= 0.9.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 
