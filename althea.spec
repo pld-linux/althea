@@ -2,12 +2,13 @@ Summary:	An GTK+ IMAP mail client
 Summary(pl):	Klient poczty IMAP w GTK+
 Name:		althea
 Version:	0.5.7
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tgz
 Patch0:		%{name}-cxx.patch
 Patch1:		%{name}-makefile.patch
+Patch2:		%{name}-home_etc.patch
 URL:		http://althea.sourceforge.net/
 BuildRequires:	gtk+-devel
 BuildRequires:	libstdc++-devel
@@ -25,6 +26,7 @@ wykorzystania po³±czeñ SSL.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__make} CXX=%{__cxx} DEBUGFLAGS="%{rpmcflags}" \
