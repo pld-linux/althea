@@ -5,15 +5,14 @@ Version:	0.5.7
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tgz
+Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tgz
 Patch0:		%{name}-cxx.patch
 Patch1:		%{name}-makefile.patch
 URL:		http://althea.sourceforge.net/
-BuildRequires:	libstdc++-devel
 BuildRequires:	gtk+-devel
+BuildRequires:	libstdc++-devel
 BuildRequires:	openssl-devel >= 0.9.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 Althea is an SSL aware IMAP mail for X Window System.
