@@ -43,13 +43,11 @@ rm -rf $RPM_BUILD_ROOT
 
 find Documentation -name "CVS" | xargs rm -rf
 
-gzip -9nf althearc.example
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz Documentation/*
+%doc althearc.example Documentation/*
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/althea
