@@ -31,8 +31,8 @@ wykorzystania po³±czeñ SSL.
 
 %build
 %{__make} CXX=%{__cxx} DEBUGFLAGS="%{rpmcflags}" \
-        PIXDIR=%{_datadir}/althea \
-        DOCDIR=%{_defaultdocdir}/%{name}-%{version}
+	PIXDIR=%{_datadir}/althea \
+	DOCDIR=%{_defaultdocdir}/%{name}-%{version}
 
 %install
 rm -rf $RPM_BUILD_ROOT
