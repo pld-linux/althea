@@ -13,7 +13,7 @@ Patch2:		%{name}-etc_dir.patch
 URL:		http://althea.sourceforge.net/
 BuildRequires:	gtk+-devel
 BuildRequires:	libstdc++-devel
-BuildRequires:	openssl-devel >= 0.9.7
+BuildRequires:	openssl-devel >= 0.9.7c
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
