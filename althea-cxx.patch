@@ -1,0 +1,32 @@
+--- althea-0.5.7/tolower.h~	Tue Jan 22 18:30:15 2002
++++ althea-0.5.7/tolower.h	Fri Feb 22 09:55:41 2002
+@@ -5,6 +5,7 @@
+ #include <string>
+ #include <ctype.h>
+ 
++using namespace std;
+ 
+ string tolower(string s);
+ 
+--- althea-0.5.7/MIME.h~	Fri Feb 22 09:57:47 2002
++++ althea-0.5.7/MIME.h	Fri Feb 22 09:58:26 2002
+@@ -6,7 +6,7 @@
+ #include <iostream>
+ #include <fstream>
+ 
+-
++using namespace std;
+ 
+ 
+ 
+--- althea-0.5.7/MIME.cpp~	Tue Jan 22 18:30:15 2002
++++ althea-0.5.7/MIME.cpp	Fri Feb 22 10:00:40 2002
+@@ -91,7 +91,7 @@
+ }
+ 
+ void check(unsigned int convertedVal, ifstream &fileIn, int loc, int counter)  {
+-   unsigned char c;
++   char c;
+ 
+    fileIn.get(c);
+    if ((unsigned int)c!=convertedVal)  {
