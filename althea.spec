@@ -5,7 +5,7 @@ Version:	0.5.7
 Release:	2
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tgz
+Source0:	http://dl.sourceforge.net/althea/%{name}-%{version}.tgz
 # Source0-md5:	ef84300c1f8a9e0d5d688b564c724e0e
 Patch0:		%{name}-cxx.patch
 Patch1:		%{name}-makefile.patch
@@ -32,7 +32,7 @@ wykorzystania po³±czeñ SSL.
 %build
 %{__make} CXX=%{__cxx} DEBUGFLAGS="%{rpmcflags}" \
 	PIXDIR=%{_datadir}/althea \
-	DOCDIR=%{_defaultdocdir}/%{name}-%{version}
+	DOCDIR=%{_docdir}/%{name}-%{version}
 
 %install
 rm -rf $RPM_BUILD_ROOT
