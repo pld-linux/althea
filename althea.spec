@@ -30,7 +30,9 @@ wykorzystania po³±czeñ SSL.
 %patch2 -p1
 
 %build
-%{__make} CXX=%{__cxx} DEBUGFLAGS="%{rpmcflags}" \
+%{__make} \
+	CXX="%{__cxx}" \
+	DEBUGFLAGS="%{rpmcflags}" \
 	PIXDIR=%{_datadir}/althea \
 	DOCDIR=%{_docdir}/%{name}-%{version}
 
