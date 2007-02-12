@@ -1,5 +1,5 @@
 Summary:	A GTK+ IMAP mail client
-Summary(pl):	Klient poczty IMAP w GTK+
+Summary(pl.UTF-8):   Klient poczty IMAP w GTK+
 Name:		althea
 Version:	0.5.7
 Release:	2
@@ -19,9 +19,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Althea is an SSL aware IMAP mail for X Window System.
 
-%description -l pl
-Althea jest klientem poczty IMAP pod X Window System z mo¿liwo¶ci±
-wykorzystania po³±czeñ SSL.
+%description -l pl.UTF-8
+Althea jest klientem poczty IMAP pod X Window System z moÅ¼liwoÅ›ciÄ…
+wykorzystania poÅ‚Ä…czeÅ„ SSL.
 
 %prep
 %setup -q
